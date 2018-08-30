@@ -47,11 +47,6 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeValidate: (song, options) => {
         if (song.releasedYear === '') {
-          song.releasedYear = -1;
-        }
-      },
-      beforeCreate: (song, options) => {
-        if (song.releasedYear === -1) {
           song.releasedYear = new Date().getFullYear();
         }
       }
