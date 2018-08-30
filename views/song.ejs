@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%- include('../views/home') %>
+    <% if (err) { %>
+      <ul>
+        <% err.forEach(e => { %>
+          <li style="color: red"><%= e.message %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+    <form action="/songs" method="post">
+      <input type="text" name="title" placeholder="Title of Song"><br>
+      <input type="text" name="singerName" placeholder="Singer Name"><br>
+      <input type="text" name="releasedYear" placeholder="Released Year"><br>
+      <input type="text" name="rating" placeholder="rating"><br>
+      <input type="radio" name="genre" value="k-pop">k-pop
+      <input type="radio" name="genre" value="edm">edm
+      <input type="radio" name="genre" value="jazz">jazz
+      <input type="radio" name="genre" value="country">country
+      <br><button type="submit">SAVE</button>
+    </form><br><br>
+
+  <h1><%= query_str.title %></h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th><a href='/songs/sort?<%= query_str.title %>'>Title</a></th>
+          <th>Singer</th>
+          <th>Released Year</th>
+          <th>Genre</th>
+          <th><a href="/songs/sort?<%= query_str.rating %>">Rating</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% songs.forEach(song => { %>
+          <tr>
+            <td><%= song.title %></td>
+            <td><%= song.singerName %></td>
+            <td><%= song.releasedYear %></td>
+            <td><%= song.genre %></td>
+            <td><%= convertRating(song.rating) %></td>
+            <td>
+              <a href="/songs/<%= song.id %>/edit">EDIT</a>
+              <a href="/songs/<%= song.id %>/delete">DELETE</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

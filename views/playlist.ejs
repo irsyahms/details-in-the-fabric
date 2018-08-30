@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <%- include('../views/home') %>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Nama Playlist</th>
+          <th>Description</th>
+          <th>Menu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% playlists.forEach(playlist => { %>
+          <tr>
+            <td><%= playlist.namePlaylist %></td>
+            <td><%= playlist.description %></td>
+            <td>
+              <a href="/playlists/<%= playlist.id %>/addSong">Add Songs</a> ||
+              <a href="/playlists/<%= playlist.id %>/viewPlaylist">View Playlist</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

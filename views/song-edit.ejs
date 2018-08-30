@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%- include('../views/home') %>
+    <form action="/songs/<%= song.id %>/edit" method="post">
+      <input type="text" name="title" value="<%=song.title %>"><br>
+      <input type="text" name="singerName" value="<%=song.singerName %>"><br>
+      <input type="text" name="releasedYear" value="<%=song.releasedYear %>"><br>
+      <input type="text" name="rating" value="<%=song.rating %>"><br>
+      <% if (song.genre === 'k-pop') { %>
+        <input type="radio" name="genre" value="k-pop" checked="checked">k-pop
+        <input type="radio" name="genre" value="edm">edm
+        <input type="radio" name="genre" value="jazz">jazz
+        <input type="radio" name="genre" value="country">country
+      <% } else if (song.genre === 'edm'){ %>
+        <input type="radio" name="genre" value="k-pop">k-pop
+        <input type="radio" name="genre" value="edm" checked="checked" >edm
+        <input type="radio" name="genre" value="jazz">jazz
+        <input type="radio" name="genre" value="country">country
+      <% } else if (song.genre === 'jazz'){ %>
+        <input type="radio" name="genre" value="k-pop">k-pop
+        <input type="radio" name="genre" value="edm">edm
+        <input type="radio" name="genre" value="jazz" checked="checked">jazz
+        <input type="radio" name="genre" value="country">country
+      <% } else { %>
+        <input type="radio" name="genre" value="k-pop">k-pop
+        <input type="radio" name="genre" value="edm">edm
+        <input type="radio" name="genre" value="jazz">jazz
+        <input type="radio" name="genre" value="country" checked="checked">country
+      <% } %>
+      <br><button type="submit">SAVE</button>
+    </form><br><br>
+    </table>
+  </body>
+</html>

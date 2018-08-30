@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%- include('../views/home') %>
+    <h1>Playlist: <%= playlist.namePlaylist %></h1>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Singer</th>
+          <th>Genre</th>
+          <th>Rating</th>
+          <th>Add this song to playlist</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% songs.forEach(song => { %>
+          <tr>
+            <td><%= song.title %></td>
+            <td><%= song.singerName %></td>
+            <td><%= song.genre %></td>
+            <td><%= convertRating(song.rating) %></td>
+            <td>
+              <a href="/playlists/<%= playlist.id%>/addSong/<%= song.id %>">Add This Song</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

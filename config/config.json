@@ -1,0 +1,12 @@
+{
+  "development": {
+    "username": "instructor",
+    "password": null,
+    "database": "victory_live_code_week_4",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}
